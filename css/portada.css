@@ -1,0 +1,244 @@
+/* Els dos trucs */
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* Els colors, en un sol lloc */
+:root {
+    --tinta: #1d1c1a;
+    --paper: #fbf8f1;
+    --gris: #6f6a61;
+    --fons-lateral: #f1ece0;
+    --vermell: #a4161a;
+}
+
+body {
+    margin: 0;
+    font-size: 1.7rem;
+    line-height: 1.5;
+    font-family: Georgia, 'Times New Roman',
+        serif;
+    background-color: var(--paper);
+    color: var(--tinta);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+.pagina {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Les notícies petites: també una quadrícula */
+.noticies {
+    display: grid;
+    gap: 24px;
+}
+
+/* La capçalera */
+.capcalera {
+    text-align: center;
+    padding: 20px 0 12px;
+    border-bottom: 4px double var(--tinta);
+}
+
+.capcalera h1 {
+    margin: 0;
+    font-family: 'Playfair Display', Georgia,
+        serif;
+    font-size: 4.4rem;
+    line-height: 1.1;
+}
+
+.data {
+    margin: 6px 0 0;
+    font-size: 1.2rem;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* El menú: Flexbox, com a la 5.3 */
+.menu {
+    border-bottom: 1px solid var(--tinta);
+}
+
+.menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 12px;
+}
+
+.menu a {
+    color: var(--tinta);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* La notícia principal */
+.principal h2 {
+    margin: 12px 0 8px;
+    font-size: 3.2rem;
+    line-height: 1.15;
+}
+
+.entradeta {
+    font-size: 2rem;
+    color: var(--gris);
+}
+
+/* Les notícies petites */
+.noticia {
+    border-top: 3px solid var(--tinta);
+    padding-top: 10px;
+}
+
+.noticia h3 {
+    margin: 10px 0 4px;
+    font-size: 1.9rem;
+    line-height: 1.2;
+}
+
+.noticia p {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.destacada h3 {
+    font-size: 2.4rem;
+}
+
+/* La columna lateral */
+.lateral {
+    padding: 0 16px 16px;
+    background-color: var(--fons-lateral);
+}
+
+.lateral h2 {
+    margin: 16px 0 8px;
+    padding-top: 8px;
+    border-top: 3px solid var(--vermell);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--vermell);
+}
+
+.lateral p {
+    margin: 0;
+}
+
+.lateral ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.lateral li {
+    margin-bottom: 6px;
+}
+
+/* El peu */
+.peu {
+    border-top: 4px double var(--tinta);
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--gris);
+}
+
+/* Grid: cada zona, amb el seu nom */
+.capcalera {
+    grid-area: cap;
+}
+
+.menu {
+    grid-area: menu;
+}
+
+.principal {
+    grid-area: principal;
+}
+
+.noticies {
+    grid-area: noticies;
+}
+
+.lateral {
+    grid-area: lateral;
+}
+
+.peu {
+    grid-area: peu;
+}
+
+/* Mòbil: una columna, les zones una sota l'altra */
+.pagina {
+    display: grid;
+    grid-template-areas:
+        "cap"
+        "menu"
+        "principal"
+        "noticies"
+        "lateral"
+        "peu";
+    gap: 24px;
+}
+
+/* A partir de 768 px: dues columnes, el lateral al costat de la principal */
+@media (min-width: 768px) {
+    .pagina {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "cap cap"
+            "menu menu"
+            "principal lateral"
+            "noticies noticies"
+            "peu peu";
+    }
+
+    .noticies {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .destacada {
+        grid-column: span 2;
+    }
+}
+
+/* A partir de 768 px: dues columnes, el lateral al costat de la principal */
+@media (min-width: 992px) {
+    .pagina {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "cap cap"
+            "menu menu"
+            "principal lateral"
+            "noticies noticies"
+            "peu peu";
+    }
+
+    .noticies {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
