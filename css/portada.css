@@ -242,3 +242,152 @@ img {
             repeat(3, 1fr);
     }
 }
+
+/* ===== 5.5: les altres pàgines del Diari
+===== */
+/* Els títols enllaçats, sense el blau dels
+enllaços */
+.noticia h3 a,
+.relacionades a {
+    color: inherit;
+}
+
+.noticia h3 a {
+    text-decoration: none;
+}
+
+.noticia h3 a:hover {
+    text-decoration: underline;
+}
+
+/* La notícia sencera */
+.categoria {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--vermell);
+}
+
+.sencera h2 {
+    margin: 4px 0 8px;
+    font-size: 3.6rem;
+    line-height: 1.1;
+}
+
+.autor {
+    font-size: 1.4rem;
+    color: var(--gris);
+
+}
+
+.relacionades {
+    border-top: 3px solid var(--tinta);
+}
+
+.relacionades h3 {
+    margin: 10px 0 8px;
+    font-size: 1.9rem;
+}
+
+.relacionades ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.relacionades li {
+    margin-bottom: 6px;
+}
+
+/* El títol de la secció */
+.titol-seccio {
+    border-bottom: 3px solid var(--vermell);
+}
+
+.titol-seccio h2 {
+    margin: 0;
+    font-size: 4rem;
+    color: var(--vermell);
+}
+
+.titol-seccio p {
+    margin: 0 0 12px;
+    color: var(--gris);
+}
+
+/* Un nom per a les zones noves */
+.sencera {
+    grid-area: noticia;
+}
+
+.relacionades {
+    grid-area: relacionades;
+}
+
+.titol-seccio {
+    grid-area: titol;
+}
+
+.peu {
+    grid-area: peu;
+}
+
+.capcalera {
+    grid-area: cap;
+}
+
+.pagina-noticia {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "cap"
+        "menu"
+        "noticia"
+        "relacionades"
+        "lateral"
+        "peu";
+}
+
+@media(min-width:768px) {
+
+    .pagina-noticia {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "cap cap"
+            "menu menu"
+            "noticia lateral"
+            "relacionades lateral"
+            "peu lateral";
+    }
+}
+
+.pagina-seccio {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "cap"
+        "menu"
+        "titol"
+        "noticies"
+        "relacionades"
+        "lateral"
+        "peu";
+}
+
+@media(min-width:768px) {
+    .pagina-seccio {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "cap cap"
+            "menu menu"
+            "titol titol"
+            "noticies lateral"
+            "relacionades lateral"
+            "peu lateral"
+        ;
+    }
+}
